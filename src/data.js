@@ -1,4 +1,4 @@
-{
+export const boards = {
   "boards": [
     {
       "name": "Platform Launch",

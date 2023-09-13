@@ -14,9 +14,10 @@ function Header() {
           Platform Launch
         </p>
 
-        <div className="header-extra flex items-center">
+        <div className="header-extra flex items-center justify-between gap-4">
           <Button name="+ Add New Task" />
-          <HiEllipsisVertical />
+          {/* <HiEllipsisVertical  style={{ fontSize: "26px" }} /> */}
+          <img src="./icon-vertical-ellipsis.svg" />
         </div>
       </div>
     </div>
