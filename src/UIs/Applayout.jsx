@@ -4,10 +4,9 @@ import MainBar from "./MainBar";
 
 function Applayout() {
   return (
-    <div className="w-full h-full ">
+    <div className="w-full h-[100%] ">
       <Header />
-
-      <main className="header-board-info flex justify-between items-center h-full">
+      <main className="header-board-info flex justify-start h-[85%]">
         <Sidebar />
         <MainBar />
       </main>
