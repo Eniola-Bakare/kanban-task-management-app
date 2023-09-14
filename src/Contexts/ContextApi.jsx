@@ -10,6 +10,7 @@ function BoardsContextProvider({ children }) {
   const [boardName, setBoardName] = useState("");
 
   const [columns, setColumns] = useState([]);
+  const [columnNames, setColumnNames] = useState({});
   
   function handleRemoveColumn(id) {
     columns.forEach((each) => console.log(each));
@@ -43,6 +44,8 @@ function BoardsContextProvider({ children }) {
         columns,
         setColumns,
         handleRemoveColumn,
+        columnNames,
+        setColumnNames,
       }}
     >
       {children}
