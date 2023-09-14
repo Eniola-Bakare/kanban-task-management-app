@@ -1,9 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "class",
   theme: {
     colors: {
-      'purple-primary': "#635FC7",
+      "purple-primary": "#635FC7",
       "purple-light": "#A8A4FF",
       black: "#000112",
       "black-light": "#20212C",
@@ -17,7 +18,7 @@ export default {
       "danger-hover": "#FF9898",
     },
     fontFamily: {
-      "plus": "Plus Jakarta Sans, sans-serif",
+      plus: "Plus Jakarta Sans, sans-serif",
     },
   },
   plugins: [],

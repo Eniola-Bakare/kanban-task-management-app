@@ -6,7 +6,7 @@ function Applayout() {
   return (
     <div className="w-full h-[100%] ">
       <Header />
-      <main className="header-board-info flex justify-start h-[85%]">
+      <main className="header-board-info flex justify-start h-[88%]">
         <Sidebar />
         <MainBar />
       </main>
