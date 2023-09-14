@@ -9,6 +9,13 @@ function BoardsContextProvider({ children }) {
   const [showBoardForm, setShowBoardForm] = useState(false);
   const [boardName, setBoardName] = useState("");
 
+  const [columns, setColumns] = useState([]);
+  
+  function handleRemoveColumn(id) {
+    columns.forEach((each) => console.log(each));
+    return setColumns(columns.filter((each) => each.props.id !== id));
+  }
+
   function handleDarkThemeChange() {
     setDarkTheme((prev) => !prev);
   }
@@ -33,6 +40,9 @@ function BoardsContextProvider({ children }) {
         setShowSidebar,
         showBoardForm,
         setShowBoardForm,
+        columns,
+        setColumns,
+        handleRemoveColumn,
       }}
     >
       {children}

@@ -1,9 +1,11 @@
+import { useEffect, useState } from "react";
 import { useBoardsContext } from "../Contexts/ContextApi";
 import Button from "./Button";
 import FormInput from "./FormInput";
+import BoardColumns from "./BoardColumns";
 
 function AddNewBoard() {
-  const { boardName, setBoardName } = useBoardsContext();
+  const { boardName, setBoardName, columns, setColumns } = useBoardsContext();
 
   return (
     <div className="w-[40%] bg-white dark:bg-grey-light p-10 rounded-lg h-fit flex flex-col gap-5">
@@ -16,22 +18,34 @@ function AddNewBoard() {
         onClick={(e) => e.stopPropagation()}
       >
         <label
-          htmlFor="boardColumns"
+          htmlFor=""
           className="mb-3 text-xl font-semibold text-grey-scale dark:text-white"
         >
           Columns
         </label>
-        <input
-          id="boardColumns"
-          value={boardName}
-          onChange={(e) => setBoardName(e.target.value)}
-          type="text"
-          placeholder="e.g. To do"
-          className="w-full border border-grey-scale rounded-md indent-4 p-3 dark:bg-grey-light dark:text-grey-scale font-medium "
-        />
+        {columns}
       </div>
-      <Button width="full" btnType="secondary" name="+Add New Column" />
-      <Button width="full" name="Create New Board" />
+      <Button
+        width="full"
+        btnType="secondary"
+        name="+Add New Column"
+        onClick={(e) => {
+          e.stopPropagation();
+          console.log(columns);
+          setColumns((prev) => [
+            ...prev,
+            <BoardColumns
+              id={Math.random() * 1000}
+              key={Math.random() * 1000}
+            />,
+          ]);
+        }}
+      />
+      <Button
+        width="full"
+        name="Create New Board"
+        onClick={(e) => e.stopPropagation()}
+      />
     </div>
   );
 }
