@@ -14,7 +14,7 @@ function Header() {
         </p>
 
         <div className="header-extra flex items-center justify-between gap-7">
-          <Button name="+ Add New Task" />
+          <Button name="+ Add New Task" width="['164px']" />
           <img src="./icon-vertical-ellipsis.svg" className="cursor-pointer" />
         </div>
       </div>

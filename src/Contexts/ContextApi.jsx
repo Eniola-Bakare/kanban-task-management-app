@@ -7,6 +7,8 @@ function BoardsContextProvider({ children }) {
   const [darkTheme, setDarkTheme] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [showBoardForm, setShowBoardForm] = useState(false);
+  const [boardName, setBoardName] = useState("");
+
   function handleDarkThemeChange() {
     setDarkTheme((prev) => !prev);
   }
@@ -23,6 +25,8 @@ function BoardsContextProvider({ children }) {
     <BoardsContext.Provider
       value={{
         boardsData,
+        boardName,
+        setBoardName,
         darkTheme,
         handleDarkThemeChange,
         showSidebar,
