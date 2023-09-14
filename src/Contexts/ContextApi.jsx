@@ -6,9 +6,8 @@ const BoardsContext = createContext();
 function BoardsContextProvider({ children }) {
   const [darkTheme, setDarkTheme] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
-
+  const [showBoardForm, setShowBoardForm] = useState(false);
   function handleDarkThemeChange() {
-    console.log(darkTheme);
     setDarkTheme((prev) => !prev);
   }
 
@@ -28,6 +27,8 @@ function BoardsContextProvider({ children }) {
         handleDarkThemeChange,
         showSidebar,
         setShowSidebar,
+        showBoardForm,
+        setShowBoardForm,
       }}
     >
       {children}

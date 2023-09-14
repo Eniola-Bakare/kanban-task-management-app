@@ -1,13 +1,15 @@
-import { BoardsContextProvider } from "./Contexts/ContextApi";
+import { useBoardsContext } from "./Contexts/ContextApi";
+import AddNewBoard from "./UIs/AddNewBoard";
 import Applayout from "./UIs/Applayout";
+import Overlay from "./UIs/Overlay";
 
 function App() {
+  const { showBoardForm } = useBoardsContext();
   return (
-    <BoardsContextProvider>
-      <div className="font-plus h-[100%] box-border">
-        <Applayout />
-      </div>
-    </BoardsContextProvider>
+    <div className="font-plus h-[100%] box-border relative">
+      <Applayout />
+      {showBoardForm && <Overlay>{<AddNewBoard />}</Overlay>}
+    </div>
   );
 }
 

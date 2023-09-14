@@ -4,7 +4,7 @@ import Toggler from "./Toggler";
 // import { boards as boardsData } from "../data";
 
 function Sidebar() {
-  const { boardsData } = useBoardsContext();
+  const { boardsData, setShowBoardForm } = useBoardsContext();
   const [boards, setBoards] = useState(boardsData.boards);
 
   const totalBoards = boards.reduce((acc, _) => (acc += 1), 0);
@@ -32,7 +32,10 @@ function Sidebar() {
         })}
         <div className="each-board flex w-full gap-3 items-center mb-5 cursor-pointer">
           <img src="./icon-board.svg" className="w-5 h-5 " />
-          <p className="borad-name font-semibold text-purple-primary text-sm">
+          <p
+            className="borad-name font-semibold text-purple-primary text-sm"
+            onClick={() => setShowBoardForm(true)}
+          >
             + Create New Board
           </p>
         </div>
