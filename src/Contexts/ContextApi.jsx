@@ -1,10 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { boards as boardsData } from "./data";
+import { boards as boardsData } from "../data";
 
 const BoardsContext = createContext();
 
 function BoardsContextProvider({ children }) {
   const [darkTheme, setDarkTheme] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
 
   function handleDarkThemeChange() {
     console.log(darkTheme);
@@ -21,7 +22,13 @@ function BoardsContextProvider({ children }) {
 
   return (
     <BoardsContext.Provider
-      value={{ boardsData, darkTheme, handleDarkThemeChange }}
+      value={{
+        boardsData,
+        darkTheme,
+        handleDarkThemeChange,
+        showSidebar,
+        setShowSidebar,
+      }}
     >
       {children}
     </BoardsContext.Provider>

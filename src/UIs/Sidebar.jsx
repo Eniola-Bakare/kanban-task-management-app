@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useBoardsContext } from "../ContextApi";
+import { useBoardsContext } from "../Contexts/ContextApi";
 import Toggler from "./Toggler";
 // import { boards as boardsData } from "../data";
 
@@ -12,7 +12,7 @@ function Sidebar() {
 
   return (
     // w-3/12
-    <div className="w-[20%] h-[100%] border-r-2 pt-12 px-10 border-r-grey-light flex flex-col relative dark:bg-grey-dark">
+    <div className="w-[20%] h-[100%] dark:border-r-2 dark:border-r-grey-light pt-12 px-10 flex flex-col relative dark:bg-grey-dark">
       <p className="mb-8 font-semibold text-grey-scale text-xs">
         ALL BOARDS ({totalBoards})
       </p>
