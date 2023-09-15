@@ -5,7 +5,8 @@ import FormInput from "./FormInput";
 import BoardColumns from "./BoardColumns";
 
 function AddNewBoard() {
-  const { boardName, setBoardName, columns, setColumns } = useBoardsContext();
+  const { boardName, setBoardName, columns, setColumns, handleAddBoard } =
+    useBoardsContext();
 
   return (
     <div className="w-[40%] bg-white dark:bg-grey-light p-10 rounded-lg h-fit flex flex-col gap-5">
@@ -31,7 +32,6 @@ function AddNewBoard() {
         name="+Add New Column"
         onClick={(e) => {
           e.stopPropagation();
-          console.log(columns);
           setColumns((prev) => [
             ...prev,
             <BoardColumns
@@ -44,7 +44,10 @@ function AddNewBoard() {
       <Button
         width="full"
         name="Create New Board"
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => {
+          e.stopPropagation();
+          handleAddBoard();
+        }}
       />
     </div>
   );

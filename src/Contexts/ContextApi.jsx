@@ -4,6 +4,7 @@ import { boards as boardsData } from "../data";
 const BoardsContext = createContext();
 
 function BoardsContextProvider({ children }) {
+  const [boards, setBoards] = useState(boardsData.boards);
   const [darkTheme, setDarkTheme] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [showBoardForm, setShowBoardForm] = useState(false);
@@ -11,9 +12,42 @@ function BoardsContextProvider({ children }) {
 
   const [columns, setColumns] = useState([]);
   const [columnNames, setColumnNames] = useState({});
-  
+  const colObjects = columns.map((eachCol) => {
+    console.log(columnNames[eachCol.props.id] === undefined);
+    if (columnNames[eachCol.props.id] === undefined) return;
+    return {
+      name: columnNames[eachCol.props.id],
+    };
+  });
+
+  const [newBoard, setNewBoard] = useState({});
+
+  useEffect(() => {
+    if (Object.keys(newBoard).length === 0 || !boardName) return;
+    //1. update boards array
+    setBoards((prev) => [...prev, newBoard]);
+
+    // 2. clear create board state
+    setNewBoard({});
+    setShowBoardForm(false);
+    setBoardName("");
+    setColumns([]);
+    console.log(boards);
+  }, [newBoard, boardName]);
+
+  function handleAddBoard() {
+    setNewBoard({
+      name: boardName,
+      columns: colObjects,
+      id: new Date(),
+    });
+
+    // console.log("columns", columns);
+    // console.log("colObjects", colObjects);
+    // console.log("colNames", columnNames);
+  }
   function handleRemoveColumn(id) {
-    columns.forEach((each) => console.log(each));
+    // columns.forEach((each) => console.log(each));
     return setColumns(columns.filter((each) => each.props.id !== id));
   }
 
@@ -32,7 +66,7 @@ function BoardsContextProvider({ children }) {
   return (
     <BoardsContext.Provider
       value={{
-        boardsData,
+        boards,
         boardName,
         setBoardName,
         darkTheme,
@@ -46,6 +80,7 @@ function BoardsContextProvider({ children }) {
         handleRemoveColumn,
         columnNames,
         setColumnNames,
+        handleAddBoard,
       }}
     >
       {children}

@@ -15,7 +15,6 @@ function BoardColumns({ id }) {
           setColumnName(e.target.value);
 
           setColumnNames({ ...columnNames, [id]: e.target.value });
-          console.log(columnNames);
         }}
         type="text"
         placeholder="e.g. To do"
