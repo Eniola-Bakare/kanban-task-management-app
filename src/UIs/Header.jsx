@@ -5,7 +5,6 @@ import Logo from "./Logo";
 
 function Header() {
   const { currentBoard } = useBoardsContext();
-  console.log("header", currentBoard?.columns);
   const [activeBoardName, setActiveBoardName] = useState("");
 
   useEffect(() => {

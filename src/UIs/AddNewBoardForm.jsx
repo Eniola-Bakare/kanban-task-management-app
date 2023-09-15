@@ -13,7 +13,7 @@ function AddNewBoardForm() {
       <p className="text-2xl font-bold text-black dark:text-white mb-8">
         Add New Board
       </p>
-      <FormInput />
+      <FormInput formName='Name' />
       <div
         className="columns flex flex-col "
         onClick={(e) => e.stopPropagation()}

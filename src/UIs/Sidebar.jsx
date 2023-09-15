@@ -7,7 +7,6 @@ function Sidebar() {
     useBoardsContext();
 
   const totalBoards = boards.reduce((acc, _) => (acc += 1), 0);
-  console.log(currentBoard);
 
   return (
     <div

@@ -1,16 +1,19 @@
 import { useState } from "react";
 import { useBoardsContext } from "../Contexts/ContextApi";
 
-function BoardInputColumns({ id }) {
+function BoardInputColumns({ id, col }) {
   const [columnName, setColumnName] = useState("");
   const { handleRemoveColumn, setColumnNames, columnNames } =
     useBoardsContext();
 
   return (
-    <div className="columns-input w-full flex items-center gap-4 mb-4">
+    <div
+      className="columns-input w-full flex items-center gap-4 mb-4"
+      onClick={(e) => e.stopPropagation()}
+    >
       <input
         id={id}
-        value={columnName}
+        value={columnName || col.name}
         onChange={(e) => {
           setColumnName(e.target.value);
 

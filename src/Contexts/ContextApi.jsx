@@ -49,10 +49,6 @@ function BoardsContextProvider({ children }) {
       columns: colObjects,
       id: new Date(),
     });
-
-    // console.log("columns", columns);
-    // console.log("colObjects", colObjects);
-    // console.log("colNames", columnNames);
   }
   function handleRemoveColumn(id) {
     // columns.forEach((each) => console.log(each));
@@ -75,12 +71,18 @@ function BoardsContextProvider({ children }) {
   const [currentBoard, setCurrentBoard] = useState(
     boards[boards.length - 1] || {}
   );
-  console.log(currentBoard);
+
+  // For editing the board
+  const [showBoardEditForm, setShowBoardEditForm] = useState(false);
+  // function handleShowBoardEditForm(){
+  //   cl
+  // }
 
   return (
     <BoardsContext.Provider
       value={{
         boards,
+        setBoards,
         boardName,
         setBoardName,
         darkTheme,
@@ -97,6 +99,8 @@ function BoardsContextProvider({ children }) {
         handleAddBoard,
         currentBoard,
         setCurrentBoard,
+        showBoardEditForm,
+        setShowBoardEditForm,
       }}
     >
       {children}

@@ -1,7 +1,7 @@
 import { useBoardsContext } from "../Contexts/ContextApi";
 
-function FormInput() {
-  const { boardName, setBoardName } = useBoardsContext();
+function FormInput({ formName }) {
+  const { boardName, setBoardName, currentBoard } = useBoardsContext();
   return (
     <div
       className="form-input flex flex-col mb-3"
@@ -11,11 +11,11 @@ function FormInput() {
         htmlFor="boardName"
         className="mb-3 text-xl font-semibold text-grey-scale dark:text-white"
       >
-        Name
+        {formName}
       </label>
       <input
         id="boardName"
-        value={boardName}
+        value={boardName || currentBoard.name}
         onChange={(e) => setBoardName(e.target.value)}
         type="text"
         placeholder="e.g. Web Design"

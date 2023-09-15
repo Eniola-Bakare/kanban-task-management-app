@@ -2,7 +2,7 @@ import { useBoardsContext } from "../Contexts/ContextApi";
 import Button from "./Button";
 
 function AddColumn() {
-  const { setShowBoardForm } = useBoardsContext();
+  const { setShowBoardEditForm } = useBoardsContext();
   return (
     <>
       <p className="text-lg text-grey-scale font-extrabold">
@@ -11,7 +11,7 @@ function AddColumn() {
       <div className="">
         <Button
           name="+ Add New Column"
-          onClick={() => setShowBoardForm(true)}
+          onClick={() => setShowBoardEditForm(true)}
         />
       </div>
     </>
