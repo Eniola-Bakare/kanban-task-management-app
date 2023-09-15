@@ -4,6 +4,7 @@ import { boards as boardsData } from "../data";
 const BoardsContext = createContext();
 
 function BoardsContextProvider({ children }) {
+  // new boards
   const [boards, setBoards] = useState(boardsData.boards);
   const [darkTheme, setDarkTheme] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
@@ -13,7 +14,7 @@ function BoardsContextProvider({ children }) {
   const [columns, setColumns] = useState([]);
   const [columnNames, setColumnNames] = useState({});
   const colObjects = columns.map((eachCol) => {
-    console.log(columnNames[eachCol.props.id] === undefined);
+    // console.log(columnNames[eachCol.props.id] === undefined);
     if (columnNames[eachCol.props.id] === undefined) return;
     return {
       name: columnNames[eachCol.props.id],
@@ -26,6 +27,7 @@ function BoardsContextProvider({ children }) {
     if (Object.keys(newBoard).length === 0 || !boardName) return;
     //1. update boards array
     setBoards((prev) => [...prev, newBoard]);
+    setCurrentBoard(newBoard);
 
     // 2. clear create board state
     setNewBoard({});
@@ -63,6 +65,8 @@ function BoardsContextProvider({ children }) {
     }
   }, [darkTheme]);
 
+  // for current board
+  const [currentBoard, setCurrentBoard] = useState({});
   return (
     <BoardsContext.Provider
       value={{
@@ -81,6 +85,8 @@ function BoardsContextProvider({ children }) {
         columnNames,
         setColumnNames,
         handleAddBoard,
+        currentBoard,
+        setCurrentBoard,
       }}
     >
       {children}

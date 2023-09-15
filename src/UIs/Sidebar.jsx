@@ -3,7 +3,7 @@ import Toggler from "./Toggler";
 // import { boards as boardsData } from "../data";
 
 function Sidebar() {
-  const { setShowBoardForm, boards } = useBoardsContext();
+  const { setShowBoardForm, boards, setCurrentBoard } = useBoardsContext();
 
   const totalBoards = boards.reduce((acc, _) => (acc += 1), 0);
   // console.log(boards);
@@ -14,12 +14,13 @@ function Sidebar() {
       <p className="mb-8 font-semibold text-grey-scale text-xs">
         ALL BOARDS ({totalBoards})
       </p>
-      <section className="boards" key='boards'>
+      <section className="boards" key="boards">
         {boards.map((eachBoard) => {
           return (
             <div
               key={eachBoard.id}
               className="each-board flex w-full gap-3 items-center mb-5 cursor-pointer"
+              onClick={() => setCurrentBoard(eachBoard)}
             >
               <img src="./icon-board.svg" className="w-5 h-5 " />
               <p className="borad-name font-semibold text-grey-scale text-sm">
