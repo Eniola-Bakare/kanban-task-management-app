@@ -5,6 +5,7 @@ import Logo from "./Logo";
 
 function Header() {
   const { currentBoard } = useBoardsContext();
+  console.log("header", currentBoard?.columns);
   const [activeBoardName, setActiveBoardName] = useState("");
 
   useEffect(() => {
@@ -21,7 +22,11 @@ function Header() {
         </p>
 
         <div className="header-extra flex items-center justify-between gap-7">
-          <Button name="+ Add New Task" width="['164px']" />
+          <Button
+            disabled={currentBoard?.columns === undefined}
+            name="+ Add New Task"
+            width="['164px']"
+          />
           <img src="./icon-vertical-ellipsis.svg" className="cursor-pointer" />
         </div>
       </div>

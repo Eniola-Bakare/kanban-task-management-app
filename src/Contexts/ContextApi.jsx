@@ -13,8 +13,9 @@ function BoardsContextProvider({ children }) {
 
   const [columns, setColumns] = useState([]);
   const [columnNames, setColumnNames] = useState({});
+
+  // to create columns from input fields of add board columns
   const colObjects = columns.map((eachCol) => {
-    // console.log(columnNames[eachCol.props.id] === undefined);
     if (columnNames[eachCol.props.id] === undefined) return;
     return {
       name: columnNames[eachCol.props.id],
@@ -65,8 +66,12 @@ function BoardsContextProvider({ children }) {
     }
   }, [darkTheme]);
 
-  // for current board
-  const [currentBoard, setCurrentBoard] = useState({});
+  // For current board
+  const [currentBoard, setCurrentBoard] = useState(
+    boards[boards.length - 1] || {}
+  );
+  console.log(currentBoard);
+
   return (
     <BoardsContext.Provider
       value={{
