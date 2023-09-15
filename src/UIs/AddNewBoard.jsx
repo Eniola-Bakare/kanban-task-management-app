@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useBoardsContext } from "../Contexts/ContextApi";
 import Button from "./Button";
 import FormInput from "./FormInput";
-import BoardColumns from "./BoardColumns";
+import BoardInputColumns from "./BoardInputColumns";
 
 function AddNewBoard() {
   const { boardName, setBoardName, columns, setColumns, handleAddBoard } =
@@ -34,7 +34,7 @@ function AddNewBoard() {
           e.stopPropagation();
           setColumns((prev) => [
             ...prev,
-            <BoardColumns
+            <BoardInputColumns
               id={Math.random() * 1000}
               key={Math.random() * 1000}
             />,

@@ -1,7 +1,6 @@
 import { useBoardsContext } from "../Contexts/ContextApi";
 import BoardIcon from "../icons/BoardIcon";
 import Toggler from "./Toggler";
-// import { boards as boardsData } from "../data";
 
 function Sidebar() {
   const { setShowBoardForm, boards, setCurrentBoard, currentBoard } =
@@ -15,7 +14,7 @@ function Sidebar() {
       className={`  w-[20%] h-[100%] dark:border-r-2 dark:border-r-grey-light pt-12 pr-10 flex flex-col relative dark:bg-grey-dark`}
     >
       <p className="mb-8 font-semibold text-grey-scale text-xs pl-10">
-        ALL BOARDS ( {totalBoards} )
+        ALL BOARDS ( {totalBoards})
       </p>
       <section className="boards" key="boards">
         {boards

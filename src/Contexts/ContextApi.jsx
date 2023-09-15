@@ -25,7 +25,12 @@ function BoardsContextProvider({ children }) {
   const [newBoard, setNewBoard] = useState({});
 
   useEffect(() => {
-    if (Object.keys(newBoard).length === 0 || !boardName) return;
+    if (
+      Object.keys(newBoard).length === 0 ||
+      !boardName ||
+      boardName.length < 4
+    )
+      return;
     //1. update boards array
     setBoards((prev) => [...prev, newBoard]);
     setCurrentBoard(newBoard);

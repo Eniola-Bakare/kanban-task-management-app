@@ -1,37 +1,15 @@
-import { useState } from "react";
-import { useBoardsContext } from "../Contexts/ContextApi";
+import CurrentBoardDetails from "./CurrentBoardDetails";
 
-function BoardColumns({ id }) {
-  const [columnName, setColumnName] = useState("");
-  const { handleRemoveColumn, setColumnNames, columnNames } =
-    useBoardsContext();
-
+function BoardColumns({ currentBoard }) {
   return (
-    <div className="columns-input w-full flex items-center gap-4 mb-4">
-      <input
-        id={id}
-        value={columnName}
-        onChange={(e) => {
-          setColumnName(e.target.value);
-
-          setColumnNames({ ...columnNames, [id]: e.target.value });
-        }}
-        type="text"
-        placeholder="e.g. To do"
-        className=" border border-grey-scale rounded-md indent-4 p-3 dark:bg-grey-light dark:text-grey-scale font-medium w-[95%]"
-      />
-      <span>
-        {
-          <img
-            src="./icon-cross.svg"
-            alt="cancel icon"
-            onClick={() => {
-              console.log(columnName);
-              handleRemoveColumn(id);
-            }}
-          />
-        }
-      </span>
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-3 w-full h-full items-start overflow-scroll overflow-y-hidden overflow-x-hidden">
+      {currentBoard?.columns?.filter((col) => col?.tasks?.length > 1)
+        .map((eachCol) => (
+          <CurrentBoardDetails eachCol={eachCol} key={eachCol.name} />
+        ))}
+      <div className="add-column-bar bg-grey-scale/20 h-[94%] flex justify-center items-center mt-8 rounded-md">
+        <p className="text-grey-scale font-bold text-xl">+ New Column</p>
+      </div>
     </div>
   );
 }
