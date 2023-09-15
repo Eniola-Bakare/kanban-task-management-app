@@ -1,5 +1,5 @@
 import { useBoardsContext } from "./Contexts/ContextApi";
-import AddNewBoard from "./UIs/AddNewBoard";
+import AddNewBoardForm from "./UIs/AddNewBoardForm";
 import Applayout from "./UIs/Applayout";
 import Overlay from "./UIs/Overlay";
 
@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="font-plus h-[100%] box-border relative">
       <Applayout />
-      {showBoardForm && <Overlay>{<AddNewBoard />}</Overlay>}
+      {showBoardForm && <Overlay>{<AddNewBoardForm />}</Overlay>}
     </div>
   );
 }

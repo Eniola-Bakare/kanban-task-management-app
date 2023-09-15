@@ -4,7 +4,7 @@ import Button from "./Button";
 import FormInput from "./FormInput";
 import BoardInputColumns from "./BoardInputColumns";
 
-function AddNewBoard() {
+function AddNewBoardForm() {
   const { boardName, setBoardName, columns, setColumns, handleAddBoard } =
     useBoardsContext();
 
@@ -53,4 +53,4 @@ function AddNewBoard() {
   );
 }
 
-export default AddNewBoard;
+export default AddNewBoardForm;

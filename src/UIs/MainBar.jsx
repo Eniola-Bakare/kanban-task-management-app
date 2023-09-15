@@ -26,11 +26,7 @@ function MainBar() {
           <div className="">
             <Button
               name="+ Create New Board"
-              onClick={
-                boards.length === 0
-                  ? () => setShowBoardForm(true)
-                  : console.log("cominggg")
-              }
+              onClick={() => setShowBoardForm(true)}
             />
           </div>
         </>
