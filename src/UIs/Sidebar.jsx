@@ -3,8 +3,13 @@ import BoardIcon from "../icons/BoardIcon";
 import Toggler from "./Toggler";
 
 function Sidebar() {
-  const { setShowBoardForm, boards, setCurrentBoard, currentBoard } =
-    useBoardsContext();
+  const {
+    setShowBoardForm,
+    boards,
+    setCurrentBoard,
+    setBoardName,
+    currentBoard,
+  } = useBoardsContext();
 
   const totalBoards = boards.reduce((acc, _) => (acc += 1), 0);
 
@@ -44,7 +49,10 @@ function Sidebar() {
           <BoardIcon color="#635FC7" />
           <p
             className="borad-name font-semibold text-purple-primary text-sm"
-            onClick={() => setShowBoardForm(true)}
+            onClick={() => {
+              setBoardName("");
+              setShowBoardForm(true);
+            }}
           >
             + Create New Board
           </p>

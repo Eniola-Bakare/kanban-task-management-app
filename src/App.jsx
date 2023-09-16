@@ -15,7 +15,9 @@ function App() {
     <div className="font-plus h-[100%] box-border relative">
       <Applayout />
       {showBoardForm && (
-        <Overlay closeOverLay={setShowBoardForm}>{<AddNewBoardForm />}</Overlay>
+        <Overlay closeOverLay={setShowBoardForm}>
+              <AddNewBoardForm />
+        </Overlay>
       )}
       {showBoardEditForm && (
         <Overlay closeOverLay={setShowBoardEditForm}>

@@ -1,10 +1,44 @@
-import { useState } from "react";
+import React, { useEffect, useRef, useState, memo } from "react";
+
 import { useBoardsContext } from "../Contexts/ContextApi";
 
-function BoardInputColumns({ id, col }) {
-  const [columnName, setColumnName] = useState("");
-  const { handleRemoveColumn, setColumnNames, columnNames } =
-    useBoardsContext();
+function BoardInputColumns({ id, colName }) {
+  const [columnName, setColumnName] = useState(colName || "");
+  let newColumnName = columnName;
+
+  
+  const {
+    handleRemoveColumn,
+    setColumnNames,
+    currColNames,
+    columnNames,
+    saveChanges,
+    setCurrentBoard,
+  } = useBoardsContext();
+
+  function handleOnChange(e) {
+    if (colName) {
+      console.log(e.target.value);
+      console.log(colName);
+      // console.log(currentBoard.columns);
+
+      setColumnName(e.target.value);
+
+      setCurrentBoard((prev) => ({
+        ...prev,
+        columns: prev.columns.map((col) => {
+          if (col.name === colName) return { ...col, name: columnName };
+          return col;
+        }),
+      }));
+      setColumnNames((prev) => ({ ...prev, [colName]: colName }));
+      return;
+    }
+
+    setColumnName(e.target.value);
+    setColumnNames((prev) => ({ ...prev, [id]: e.target.value }));
+  }
+  console.log(currColNames);
 
   return (
     <div
@@ -13,12 +47,8 @@ function BoardInputColumns({ id, col }) {
     >
       <input
         id={id}
-        value={columnName || col.name}
-        onChange={(e) => {
-          setColumnName(e.target.value);
-
-          setColumnNames({ ...columnNames, [id]: e.target.value });
-        }}
+        value={columnName}
+        onChange={(e) => handleOnChange(e)}
         type="text"
         placeholder="e.g. To do"
         className=" border border-grey-scale rounded-md indent-4 p-3 dark:bg-grey-light dark:text-grey-scale font-medium w-[95%]"
@@ -39,4 +69,4 @@ function BoardInputColumns({ id, col }) {
   );
 }
 
-export default BoardInputColumns;
+export default React.memo(BoardInputColumns);

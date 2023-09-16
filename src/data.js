@@ -284,98 +284,98 @@ export const boards = {
         }
       ]
     },
-    // {
-    //   "name": "Marketing Plan",
-    //   'id': '222289',
-    //   "columns": [
-    //     {
-    //       "name": "Todo",
-    //       "tasks": [
-    //         {
-    //           "title": "Plan Product Hunt launch",
-    //           "description": "",
-    //           "status": "Todo",
-    //           "subtasks": [
-    //             {
-    //               "title": "Find hunter",
-    //               "isCompleted": false
-    //             },
-    //             {
-    //               "title": "Gather assets",
-    //               "isCompleted": false
-    //             },
-    //             {
-    //               "title": "Draft product page",
-    //               "isCompleted": false
-    //             },
-    //             {
-    //               "title": "Notify customers",
-    //               "isCompleted": false
-    //             },
-    //             {
-    //               "title": "Notify network",
-    //               "isCompleted": false
-    //             },
-    //             {
-    //               "title": "Launch!",
-    //               "isCompleted": false
-    //             }
-    //           ]
-    //         },
-    //         {
-    //           "title": "Share on Show HN",
-    //           "description": "",
-    //           "status": "",
-    //           "subtasks": [
-    //             {
-    //               "title": "Draft out HN post",
-    //               "isCompleted": false
-    //             },
-    //             {
-    //               "title": "Get feedback and refine",
-    //               "isCompleted": false
-    //             },
-    //             {
-    //               "title": "Publish post",
-    //               "isCompleted": false
-    //             }
-    //           ]
-    //         },
-    //         {
-    //           "title": "Write launch article to publish on multiple channels",
-    //           "description": "",
-    //           "status": "",
-    //           "subtasks": [
-    //             {
-    //               "title": "Write article",
-    //               "isCompleted": false
-    //             },
-    //             {
-    //               "title": "Publish on LinkedIn",
-    //               "isCompleted": false
-    //             },
-    //             {
-    //               "title": "Publish on Inndie Hackers",
-    //               "isCompleted": false
-    //             },
-    //             {
-    //               "title": "Publish on Medium",
-    //               "isCompleted": false
-    //             }
-    //           ]
-    //         }
-    //       ]
-    //     },
-    //     {
-    //       "name": "Doing",
-    //       "tasks": []
-    //     },
-    //     {
-    //       "name": "Done",
-    //       "tasks": []
-    //     }
-    //   ]
-    // },
+    {
+      "name": "Marketing Plan",
+      'id': '222289',
+      "columns": [
+        {
+          "name": "Todo",
+          "tasks": [
+            {
+              "title": "Plan Product Hunt launch",
+              "description": "",
+              "status": "Todo",
+              "subtasks": [
+                {
+                  "title": "Find hunter",
+                  "isCompleted": false
+                },
+                {
+                  "title": "Gather assets",
+                  "isCompleted": false
+                },
+                {
+                  "title": "Draft product page",
+                  "isCompleted": false
+                },
+                {
+                  "title": "Notify customers",
+                  "isCompleted": false
+                },
+                {
+                  "title": "Notify network",
+                  "isCompleted": false
+                },
+                {
+                  "title": "Launch!",
+                  "isCompleted": false
+                }
+              ]
+            },
+            {
+              "title": "Share on Show HN",
+              "description": "",
+              "status": "",
+              "subtasks": [
+                {
+                  "title": "Draft out HN post",
+                  "isCompleted": false
+                },
+                {
+                  "title": "Get feedback and refine",
+                  "isCompleted": false
+                },
+                {
+                  "title": "Publish post",
+                  "isCompleted": false
+                }
+              ]
+            },
+            {
+              "title": "Write launch article to publish on multiple channels",
+              "description": "",
+              "status": "",
+              "subtasks": [
+                {
+                  "title": "Write article",
+                  "isCompleted": false
+                },
+                {
+                  "title": "Publish on LinkedIn",
+                  "isCompleted": false
+                },
+                {
+                  "title": "Publish on Inndie Hackers",
+                  "isCompleted": false
+                },
+                {
+                  "title": "Publish on Medium",
+                  "isCompleted": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Doing",
+          "tasks": []
+        },
+        {
+          "name": "Done",
+          "tasks": []
+        }
+      ]
+    },
     // {
     //   "name": "Roadmap",
     //   'id': '22228999',

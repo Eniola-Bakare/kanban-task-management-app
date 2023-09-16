@@ -1,7 +1,11 @@
+import { useEffect } from "react";
 import { useBoardsContext } from "../Contexts/ContextApi";
 
-function FormInput({ formName }) {
+function FormInput({ formName, value }) {
   const { boardName, setBoardName, currentBoard } = useBoardsContext();
+  useEffect(() => {
+    if (value) setBoardName(value);
+  }, []);
   return (
     <div
       className="form-input flex flex-col mb-3"
@@ -15,7 +19,7 @@ function FormInput({ formName }) {
       </label>
       <input
         id="boardName"
-        value={boardName || currentBoard.name}
+        value={boardName}
         onChange={(e) => setBoardName(e.target.value)}
         type="text"
         placeholder="e.g. Web Design"

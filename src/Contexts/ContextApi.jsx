@@ -44,11 +44,14 @@ function BoardsContextProvider({ children }) {
   }, [newBoard, boardName]);
 
   function handleAddBoard() {
+    if (boardName === "" || boardName.length < 4) return;
     setNewBoard({
       name: boardName,
       columns: colObjects,
       id: new Date(),
     });
+    setShowBoardForm(false);
+    setColumnNames({});
   }
   function handleRemoveColumn(id) {
     // columns.forEach((each) => console.log(each));
@@ -74,6 +77,9 @@ function BoardsContextProvider({ children }) {
 
   // For editing the board
   const [showBoardEditForm, setShowBoardEditForm] = useState(false);
+  const [saveChanges, setSaveChanges] = useState(false);
+  const [currColNames, setCurColNames] = useState({});
+
   // function handleShowBoardEditForm(){
   //   cl
   // }
@@ -101,6 +107,10 @@ function BoardsContextProvider({ children }) {
         setCurrentBoard,
         showBoardEditForm,
         setShowBoardEditForm,
+        saveChanges,
+        setSaveChanges,
+        currColNames,
+        setCurColNames,
       }}
     >
       {children}
