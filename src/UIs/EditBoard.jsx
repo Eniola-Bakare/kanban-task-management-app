@@ -3,6 +3,9 @@ import { useBoardsContext } from "../Contexts/ContextApi";
 import FormInput from "./FormInput";
 import BoardInputColumns from "./BoardInputColumns";
 import Button from "./Button";
+import BoardsEditForm from "./BoardsEditForm";
+
+const MemoizedBoardEditForm = memo(BoardsEditForm);
 
 function EditBoard() {
   const {
@@ -12,15 +15,19 @@ function EditBoard() {
     setColumns,
     boards,
     setBoards,
+    columnNames,
     setBoardName,
     setShowBoardEditForm,
     setSaveChanges,
+    setColumnNames,
   } = useBoardsContext();
 
   console.log(currentBoard);
   function handleChanges() {
     if (boardName === "") return;
     setSaveChanges(true);
+
+    // for board's name
     setCurrentBoard((prev) => ({ ...prev, name: boardName }));
     setBoards((prevBoards) =>
       prevBoards.map((board) => {
@@ -28,10 +35,26 @@ function EditBoard() {
         return board;
       })
     );
+
+    // for board columns
+    console.log(columnNames);
+    console.log(currentBoard);
+    setCurrentBoard((prev) => ({
+      ...prev,
+      columns: prev.columns.map((col) => {
+        if (columnNames[col.name]) {
+          return { ...col, name: columnNames[col.name] };
+        }
+        return col;
+      }),
+    }));
+
     setBoardName("");
     setSaveChanges(false);
+    setColumnNames({});
     setShowBoardEditForm(false);
   }
+  console.log(currentBoard.columns);
 
   return (
     <div className="w-[40%] bg-white dark:bg-grey-light p-10 rounded-lg h-fit flex flex-col gap-5">
@@ -50,10 +73,11 @@ function EditBoard() {
           Board Columns
         </label>
         {currentBoard?.columns.map((col) => (
-          <BoardInputColumns
+          <MemoizedBoardEditForm
             colName={col.name}
-            key={Math.random() * 230}
-            id={currentBoard.id * Math.random()}
+            key={col.id}
+            id={col.id}
+            saveChanges
           />
         ))}
       </div>

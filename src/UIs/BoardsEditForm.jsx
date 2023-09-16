@@ -3,41 +3,31 @@ import React, { useEffect, useRef, useState, memo } from "react";
 import { useBoardsContext } from "../Contexts/ContextApi";
 
 function BoardInputColumns({ id, colName }) {
-  const [columnName, setColumnName] = useState(colName || "");
-  let newColumnName = columnName;
+  const [columnName, setColumnName] = useState(colName);
+  let [newColumnNames, setNewColumnNames] = useState({});
 
   const {
     handleRemoveColumn,
     setColumnNames,
-    currColNames,
     columnNames,
     saveChanges,
     setCurrentBoard,
+    setSaveChanges,
   } = useBoardsContext();
+  console.log(columnNames);
 
-  function handleOnChange(e) {
-    if (colName) {
-      console.log(e.target.value);
-      console.log(colName);
-      // console.log(currentBoard.columns);
+  useEffect(() => {
+    // setCurrentBoard((prev) => ({
+    //   ...prev,
+    //   columns: prev.columns.map((col) => {
+    //     if (col.name === colName) return { ...col, name: columnName };
+    //     return col;
+    //   }),
+    // }));
+    if (saveChanges) return console.log("savinggggg");
 
-      setColumnName(e.target.value);
-
-      setCurrentBoard((prev) => ({
-        ...prev,
-        columns: prev.columns.map((col) => {
-          if (col.name === colName) return { ...col, name: columnName };
-          return col;
-        }),
-      }));
-      setColumnNames((prev) => ({ ...prev, [colName]: colName }));
-      return;
-    }
-
-    setColumnName(e.target.value);
-    setColumnNames((prev) => ({ ...prev, [id]: e.target.value }));
-  }
-  console.log(currColNames);
+    return () => console.log('leavinggg')
+  }, [saveChanges]);
 
   return (
     <div
@@ -49,7 +39,7 @@ function BoardInputColumns({ id, colName }) {
         value={columnName}
         onChange={(e) => {
           setColumnName(e.target.value);
-          setColumnNames((prev) => ({ ...prev, [id]: e.target.value }));
+          setColumnNames((prev) => ({ ...prev, [colName]: e.target.value }));
         }}
         type="text"
         placeholder="e.g. To do"

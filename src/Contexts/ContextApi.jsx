@@ -6,6 +6,7 @@ const BoardsContext = createContext();
 function BoardsContextProvider({ children }) {
   // new boards
   const [boards, setBoards] = useState(boardsData.boards);
+  console.log(boards);
   const [darkTheme, setDarkTheme] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [showBoardForm, setShowBoardForm] = useState(false);
@@ -18,9 +19,44 @@ function BoardsContextProvider({ children }) {
   const colObjects = columns.map((eachCol) => {
     if (columnNames[eachCol.props.id] === undefined) return;
     return {
+      id: Math.random() * 300,
       name: columnNames[eachCol.props.id],
+      tasks: [
+        {
+          title: "Conduct 5 wireframe tests",
+          description:
+            "Ensure the layout continues to make sense and we have strong buy-in from potential users.",
+          status: "Done",
+          subtasks: [
+            {
+              title: "Complete 5 wireframe prototype tests",
+              isCompleted: true,
+            },
+          ],
+        },
+        {
+          title: "Share on Show HN",
+          description: "",
+          status: "",
+          subtasks: [
+            {
+              title: "Draft out HN post",
+              isCompleted: false,
+            },
+            {
+              title: "Get feedback and refine",
+              isCompleted: false,
+            },
+            {
+              title: "Publish post",
+              isCompleted: false,
+            },
+          ],
+        },
+      ],
     };
   });
+  console.log(colObjects);
 
   const [newBoard, setNewBoard] = useState({});
 
@@ -47,8 +83,8 @@ function BoardsContextProvider({ children }) {
     if (boardName === "" || boardName.length < 4) return;
     setNewBoard({
       name: boardName,
-      columns: colObjects,
       id: new Date(),
+      columns: colObjects,
     });
     setShowBoardForm(false);
     setColumnNames({});
