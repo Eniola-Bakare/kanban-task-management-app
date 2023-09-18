@@ -12,17 +12,16 @@ function EditBoard() {
     currentBoard,
     setCurrentBoard,
     boardName,
-    setColumns,
-    boards,
     setBoards,
     columnNames,
     setBoardName,
     setShowBoardEditForm,
     setSaveChanges,
     setColumnNames,
+    setColumns,
   } = useBoardsContext();
 
-  console.log(currentBoard);
+  // console.log(currentBoard);
   function handleChanges() {
     if (boardName === "") return;
     setSaveChanges(true);
@@ -37,12 +36,13 @@ function EditBoard() {
     );
 
     // for board columns
-    console.log(columnNames);
-    console.log(currentBoard);
-    console.log(columnNames);
+    // console.log(columnNames);
+    // console.log(currentBoard);
+    // console.log(columnNames);
     setCurrentBoard((prev) => ({
       ...prev,
       columns: prev.columns.map((col) => {
+        // console.log(columnNames[col]);
         if (columnNames[col.name]) {
           return { ...col, name: columnNames[col.name] };
         }
@@ -55,7 +55,7 @@ function EditBoard() {
     setColumnNames({});
     setShowBoardEditForm(false);
   }
-  console.log(currentBoard.columns[3]);
+  console.log(currentBoard.columns);
 
   return (
     <div className="w-[40%] bg-white dark:bg-grey-light p-10 rounded-lg h-fit flex flex-col gap-5">
@@ -74,18 +74,9 @@ function EditBoard() {
           Board Columns
         </label>
         {currentBoard?.columns.map((col) => {
-          // if (col.props) {
-          //   return (
-          //     <MemoizedBoardEditForm
-          //       colName={col.name}
-          //       key={col.key}
-          //       id={col.props.id}
-          //     />
-          //   );
-          // }
           return (
             <MemoizedBoardEditForm
-              colName={col.name}
+              colName={col?.name}
               key={col.id}
               id={col.id}
               saveChanges
@@ -94,22 +85,20 @@ function EditBoard() {
         })}
       </div>
 
+      {/* pick up from hereee, a matter of what is being pushed into the currentboard columns before, now how to sync columns array with the current board array */}
       <Button
         width="full"
         btnType="secondary"
         name="+Add New Column"
         onClick={(e) => {
           e.stopPropagation();
-          setCurrentBoard((prev) => ({
+          setColumns((prev) => [
             ...prev,
-            columns: [
-              ...prev.columns,
-              <BoardInputColumns
-                id={Math.random() * 1000}
-                key={Math.random() * 1000}
-              />,
-            ],
-          }));
+            <BoardInputColumns
+              id={Math.random() * 1000}
+              key={Math.random() * 1000}
+            />,
+          ]);
         }}
       />
       <Button

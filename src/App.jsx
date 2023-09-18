@@ -16,7 +16,7 @@ function App() {
       <Applayout />
       {showBoardForm && (
         <Overlay closeOverLay={setShowBoardForm}>
-              <AddNewBoardForm />
+          <AddNewBoardForm />
         </Overlay>
       )}
       {showBoardEditForm && (

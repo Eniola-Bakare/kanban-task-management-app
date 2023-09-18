@@ -6,7 +6,6 @@ const BoardsContext = createContext();
 function BoardsContextProvider({ children }) {
   // new boards
   const [boards, setBoards] = useState(boardsData.boards);
-  console.log(boards);
   const [darkTheme, setDarkTheme] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [showBoardForm, setShowBoardForm] = useState(false);
@@ -15,50 +14,55 @@ function BoardsContextProvider({ children }) {
   const [columns, setColumns] = useState([]);
   const [columnNames, setColumnNames] = useState({});
 
-  // to create columns from input fields of add board columns
-  const colObjects = columns.map((eachCol) => {
-    if (columnNames[eachCol.props.id] === undefined) return;
-    return {
-      id: Math.random() * 300,
-      name: columnNames[eachCol.props.id],
-      tasks: [
-        {
-          title: "Conduct 5 wireframe tests",
-          description:
-            "Ensure the layout continues to make sense and we have strong buy-in from potential users.",
-          status: "Done",
-          subtasks: [
-            {
-              title: "Complete 5 wireframe prototype tests",
-              isCompleted: true,
-            },
-          ],
-        },
-        {
-          title: "Share on Show HN",
-          description: "",
-          status: "",
-          subtasks: [
-            {
-              title: "Draft out HN post",
-              isCompleted: false,
-            },
-            {
-              title: "Get feedback and refine",
-              isCompleted: false,
-            },
-            {
-              title: "Publish post",
-              isCompleted: false,
-            },
-          ],
-        },
-      ],
-    };
-  });
-  console.log(colObjects);
-
   const [newBoard, setNewBoard] = useState({});
+  const [currentBoard, setCurrentBoard] = useState(
+    boards[boards.length - 1] || {}
+  );
+
+  // to create columns from input fields of add board columns
+  console.log(columns);
+  const colObjects = columns
+    .filter((eachCol) => columnNames[eachCol?.props.id] !== undefined)
+    .map((eachCol) => {
+      return {
+        id: Math.random() * 300,
+        name: columnNames[eachCol.props.id],
+        tasks: [
+          {
+            title: "Conduct 5 wireframe tests",
+            description:
+              "Ensure the layout continues to make sense and we have strong buy-in from potential users.",
+            status: "Done",
+            subtasks: [
+              {
+                title: "Complete 5 wireframe prototype tests",
+                isCompleted: true,
+              },
+            ],
+          },
+          {
+            title: "Share on Show HN",
+            description: "",
+            status: "",
+            subtasks: [
+              {
+                title: "Draft out HN post",
+                isCompleted: false,
+              },
+              {
+                title: "Get feedback and refine",
+                isCompleted: false,
+              },
+              {
+                title: "Publish post",
+                isCompleted: false,
+              },
+            ],
+          },
+        ],
+      };
+    });
+  // console.log(colObjects);
 
   useEffect(() => {
     if (
@@ -76,7 +80,7 @@ function BoardsContextProvider({ children }) {
     setShowBoardForm(false);
     setBoardName("");
     setColumns([]);
-    console.log(boards);
+    // console.log(boards);
   }, [newBoard, boardName]);
 
   function handleAddBoard() {
@@ -107,18 +111,11 @@ function BoardsContextProvider({ children }) {
   }, [darkTheme]);
 
   // For current board
-  const [currentBoard, setCurrentBoard] = useState(
-    boards[boards.length - 1] || {}
-  );
 
   // For editing the board
   const [showBoardEditForm, setShowBoardEditForm] = useState(false);
   const [saveChanges, setSaveChanges] = useState(false);
   const [currColNames, setCurColNames] = useState({});
-
-  // function handleShowBoardEditForm(){
-  //   cl
-  // }
 
   return (
     <BoardsContext.Provider

@@ -6,7 +6,7 @@ function BoardColumns({ currentBoard }) {
   return (
     <div className="flex overflow-x-scroll gap-3 w-full h-full items-start ">
       {currentBoard?.columns
-        // ?.filter((col) => col?.tasks?.length > 1)
+        ?.filter((col) => col?.tasks?.length > 0)
         .map((eachCol) => (
           <CurrentBoardDetails eachCol={eachCol} key={eachCol.name} />
         ))}

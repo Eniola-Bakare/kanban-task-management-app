@@ -5,15 +5,21 @@ import FormInput from "./FormInput";
 import BoardInputColumns from "./BoardInputColumns";
 
 function AddNewBoardForm() {
-  const { boardName, setBoardName, columns, setColumns, handleAddBoard } =
-    useBoardsContext();
+  const {
+    boardName,
+    setBoardName,
+    columns,
+    setColumns,
+    handleAddBoard,
+    columnName,
+  } = useBoardsContext();
 
   return (
     <div className="w-[40%] bg-white dark:bg-grey-light p-10 rounded-lg h-fit flex flex-col gap-5">
       <p className="text-2xl font-bold text-black dark:text-white mb-8">
         Add New Board
       </p>
-      <FormInput formName='Name' />
+      <FormInput formName="Name" />
       <div
         className="columns flex flex-col "
         onClick={(e) => e.stopPropagation()}

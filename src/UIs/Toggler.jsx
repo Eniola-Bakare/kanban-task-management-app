@@ -5,8 +5,8 @@ function Toggler() {
     useBoardsContext();
 
   return (
-    <section className="toggle absolute w-[75%] bottom-0 pb-12">
-      <div className="theme flex h-10 px-7 py-6 items-center justify-between gap-5 bg-neutral-light dark:bg-black-light">
+    <section className="toggle absolute w-[100%] align-middle bottom-0 pb-12 flex flex-col justify-start items-center">
+      <div className="theme flex h-10 px-7 py-6 items-center justify-between gap-5 bg-neutral-light dark:bg-black-light w-[70%]">
         <img src="./icon-light-theme.svg" alt="sun icon" className="w-4" />
         <div
           className="toggler h-7 w-16 rounded-3xl flex items-center cursor-pointer bg-purple-primary"
@@ -21,7 +21,7 @@ function Toggler() {
         <img src="./icon-dark-theme.svg" alt="moon icon " className="w-4" />
       </div>
       <div
-        className="show-sidebar cursor-pointer flex w-fit gap-3 pt-3 items-center"
+        className="show-sidebar cursor-pointer flex gap-3 pt-3 items-center w-[70%]"
         onClick={() => {
           setShowSidebar(true);
         }}

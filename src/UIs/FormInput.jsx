@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useBoardsContext } from "../Contexts/ContextApi";
 
 function FormInput({ formName, value }) {
-  const { boardName, setBoardName, currentBoard } = useBoardsContext();
+  const { boardName, setBoardName } = useBoardsContext();
   useEffect(() => {
     if (value) setBoardName(value);
   }, []);

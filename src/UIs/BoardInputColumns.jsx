@@ -2,13 +2,10 @@ import React, { useState } from "react";
 
 import { useBoardsContext } from "../Contexts/ContextApi";
 
-function BoardInputColumns({ id = new Date() }) {
+function BoardInputColumns({ id }) {
   const [columnName, setColumnName] = useState("");
 
-  const { handleRemoveColumn, setColumnNames, currColNames } =
-    useBoardsContext();
-
-  console.log(currColNames);
+  const { handleRemoveColumn, setColumnNames } = useBoardsContext();
 
   return (
     <div
