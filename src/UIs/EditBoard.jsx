@@ -39,6 +39,7 @@ function EditBoard() {
     // for board columns
     console.log(columnNames);
     console.log(currentBoard);
+    console.log(columnNames);
     setCurrentBoard((prev) => ({
       ...prev,
       columns: prev.columns.map((col) => {
@@ -54,7 +55,7 @@ function EditBoard() {
     setColumnNames({});
     setShowBoardEditForm(false);
   }
-  console.log(currentBoard.columns);
+  console.log(currentBoard.columns[3]);
 
   return (
     <div className="w-[40%] bg-white dark:bg-grey-light p-10 rounded-lg h-fit flex flex-col gap-5">
@@ -72,14 +73,25 @@ function EditBoard() {
         >
           Board Columns
         </label>
-        {currentBoard?.columns.map((col) => (
-          <MemoizedBoardEditForm
-            colName={col.name}
-            key={col.id}
-            id={col.id}
-            saveChanges
-          />
-        ))}
+        {currentBoard?.columns.map((col) => {
+          // if (col.props) {
+          //   return (
+          //     <MemoizedBoardEditForm
+          //       colName={col.name}
+          //       key={col.key}
+          //       id={col.props.id}
+          //     />
+          //   );
+          // }
+          return (
+            <MemoizedBoardEditForm
+              colName={col.name}
+              key={col.id}
+              id={col.id}
+              saveChanges
+            />
+          );
+        })}
       </div>
 
       <Button

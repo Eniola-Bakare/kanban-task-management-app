@@ -11,11 +11,11 @@ function MainBar() {
     <div
       className={`bg-neutral w-${
         showSidebar ? "full" : "[80%]"
-      } dark:bg-black-light px-8 h-[100%] flex flex-col items-center gap-6 ${
+      } dark:bg-black-light px-8 h-[100%] flex items-center gap-6 ${
         currentBoard?.columns?.length === 0 ||
         currentBoard?.columns?.length === undefined
           ? "justify-center "
-          : "justify-start pt-8"
+          : "justify-start pt-8 overflow-auto"
       }`}
     >
       {currentBoard?.columns?.length === undefined ? (

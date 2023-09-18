@@ -2,7 +2,7 @@ import Task from "./Task";
 
 function CurrentBoardDetails({ eachCol }) {
   return (
-    <div className="grid grid-cols-1">
+    <div className="flex flex-col flex-shrink-0 w-[280px]">
       {/* column header */}
       <div className="column-header rounded flex items-center gap-3">
         <div className="rounded-full bg-purple-primary w-2 h-2"></div>

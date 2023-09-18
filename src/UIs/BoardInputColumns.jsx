@@ -1,42 +1,13 @@
-import React, { useEffect, useRef, useState, memo } from "react";
+import React, { useState } from "react";
 
 import { useBoardsContext } from "../Contexts/ContextApi";
 
-function BoardInputColumns({ id, colName }) {
-  const [columnName, setColumnName] = useState(colName || "");
-  let newColumnName = columnName;
+function BoardInputColumns({ id = new Date() }) {
+  const [columnName, setColumnName] = useState("");
 
-  const {
-    handleRemoveColumn,
-    setColumnNames,
-    currColNames,
-    columnNames,
-    saveChanges,
-    setCurrentBoard,
-  } = useBoardsContext();
+  const { handleRemoveColumn, setColumnNames, currColNames } =
+    useBoardsContext();
 
-  function handleOnChange(e) {
-    if (colName) {
-      console.log(e.target.value);
-      console.log(colName);
-      // console.log(currentBoard.columns);
-
-      setColumnName(e.target.value);
-
-      setCurrentBoard((prev) => ({
-        ...prev,
-        columns: prev.columns.map((col) => {
-          if (col.name === colName) return { ...col, name: columnName };
-          return col;
-        }),
-      }));
-      setColumnNames((prev) => ({ ...prev, [colName]: colName }));
-      return;
-    }
-
-    setColumnName(e.target.value);
-    setColumnNames((prev) => ({ ...prev, [id]: e.target.value }));
-  }
   console.log(currColNames);
 
   return (
@@ -71,4 +42,4 @@ function BoardInputColumns({ id, colName }) {
   );
 }
 
-export default React.memo(BoardInputColumns);
+export default BoardInputColumns;

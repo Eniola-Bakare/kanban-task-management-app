@@ -16,19 +16,6 @@ function BoardInputColumns({ id, colName }) {
   } = useBoardsContext();
   console.log(columnNames);
 
-  useEffect(() => {
-    // setCurrentBoard((prev) => ({
-    //   ...prev,
-    //   columns: prev.columns.map((col) => {
-    //     if (col.name === colName) return { ...col, name: columnName };
-    //     return col;
-    //   }),
-    // }));
-    if (saveChanges) return console.log("savinggggg");
-
-    return () => console.log('leavinggg')
-  }, [saveChanges]);
-
   return (
     <div
       className="columns-input w-full flex items-center gap-4 mb-4"
@@ -39,6 +26,7 @@ function BoardInputColumns({ id, colName }) {
         value={columnName}
         onChange={(e) => {
           setColumnName(e.target.value);
+          
           setColumnNames((prev) => ({ ...prev, [colName]: e.target.value }));
         }}
         type="text"

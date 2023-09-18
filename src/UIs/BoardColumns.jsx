@@ -4,14 +4,14 @@ import CurrentBoardDetails from "./CurrentBoardDetails";
 function BoardColumns({ currentBoard }) {
   const { setShowBoardEditForm } = useBoardsContext();
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-3 w-full h-full items-start overflow-scroll overflow-y-hidden overflow-x-hidden">
+    <div className="flex overflow-x-scroll gap-3 w-full h-full items-start ">
       {currentBoard?.columns
-        ?.filter((col) => col?.tasks?.length > 1)
+        // ?.filter((col) => col?.tasks?.length > 1)
         .map((eachCol) => (
           <CurrentBoardDetails eachCol={eachCol} key={eachCol.name} />
         ))}
       <div
-        className="add-column-bar bg-grey-scale/20 h-[94%] flex justify-center items-center mt-8 rounded-md"
+        className="add-column-bar w-[280px] bg-grey-scale/20 h-[94%] flex flex-shrink-0 justify-center items-center mt-8 rounded-md"
         onClick={() => setShowBoardEditForm(true)}
       >
         <p className="text-grey-scale font-bold text-xl">+ New Column</p>
