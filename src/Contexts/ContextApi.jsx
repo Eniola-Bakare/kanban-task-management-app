@@ -9,8 +9,9 @@ function BoardsContextProvider({ children }) {
   const [darkTheme, setDarkTheme] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [showBoardForm, setShowBoardForm] = useState(false);
-  const [showDelete, setShowDelete] = useState(true)
+  const [showDelete, setShowDelete] = useState(false);
   const [boardName, setBoardName] = useState("");
+  console.log(boards);
 
   const [columns, setColumns] = useState([]);
   const [columnNames, setColumnNames] = useState({});
@@ -21,7 +22,6 @@ function BoardsContextProvider({ children }) {
   );
 
   // to create columns from input fields of add board columns
-  console.log(columns);
   const colObjects = columns
     .filter((eachCol) => columnNames[eachCol?.props.id] !== undefined)
     .map((eachCol) => {
@@ -63,7 +63,7 @@ function BoardsContextProvider({ children }) {
         ],
       };
     });
-  console.log(colObjects);
+  // console.log(colObjects);
 
   useEffect(() => {
     if (
@@ -143,8 +143,8 @@ function BoardsContextProvider({ children }) {
         setShowBoardEditForm,
         saveChanges,
         setSaveChanges,
-        currColNames,
-        setCurColNames,
+        showDelete,
+        setShowDelete,
       }}
     >
       {children}

@@ -5,6 +5,7 @@ function Button({
   onClick,
   disabled = false,
 }) {
+
   if (btnType === "primary") {
     return (
       <button
@@ -30,7 +31,7 @@ function Button({
   } else if (btnType === "danger") {
     return (
       <button
-        className={`bg-danger-solid text-white`}
+        className={`bg-danger-solid text-white h-['48px'] rounded-3xl flex items-center justify-center py-2 cursor-pointer w-${width}`}
         disabled={disabled}
         onClick={onClick}
       >
