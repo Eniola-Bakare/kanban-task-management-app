@@ -9,6 +9,7 @@ function BoardsContextProvider({ children }) {
   const [darkTheme, setDarkTheme] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [showBoardForm, setShowBoardForm] = useState(false);
+  const [showDelete, setShowDelete] = useState(true)
   const [boardName, setBoardName] = useState("");
 
   const [columns, setColumns] = useState([]);
@@ -62,7 +63,7 @@ function BoardsContextProvider({ children }) {
         ],
       };
     });
-  // console.log(colObjects);
+  console.log(colObjects);
 
   useEffect(() => {
     if (

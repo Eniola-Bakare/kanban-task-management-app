@@ -3,17 +3,17 @@ import React, { useEffect, useRef, useState, memo } from "react";
 import { useBoardsContext } from "../Contexts/ContextApi";
 
 function BoardInputColumns({ id, colName }) {
-  const [columnName, setColumnName] = useState(colName);
-  let [newColumnNames, setNewColumnNames] = useState({});
-
   const {
     handleRemoveColumn,
     setColumnNames,
     columnNames,
+    column,
+    columnName,
     saveChanges,
     setCurrentBoard,
     setSaveChanges,
   } = useBoardsContext();
+  const [columnNameLocal, setColumnNameLocal] = useState(colName || columnName);
   console.log(columnNames);
 
   return (
@@ -23,11 +23,13 @@ function BoardInputColumns({ id, colName }) {
     >
       <input
         id={id}
-        value={columnName}
+        value={columnNameLocal}
         onChange={(e) => {
-          setColumnName(e.target.value);
-          
-          setColumnNames((prev) => ({ ...prev, [colName]: e.target.value }));
+          setColumnNameLocal(e.target.value);
+          setColumnNames((prev) => ({
+            ...prev,
+            [id]: columnNameLocal,
+          }));
         }}
         type="text"
         placeholder="e.g. To do"

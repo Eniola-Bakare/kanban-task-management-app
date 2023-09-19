@@ -14,14 +14,16 @@ function EditBoard() {
     boardName,
     setBoards,
     columnNames,
+    columns,
+    setColumns,
     setBoardName,
     setShowBoardEditForm,
     setSaveChanges,
     setColumnNames,
-    setColumns,
   } = useBoardsContext();
 
   // console.log(currentBoard);
+
   function handleChanges() {
     if (boardName === "") return;
     setSaveChanges(true);
@@ -77,28 +79,46 @@ function EditBoard() {
           return (
             <MemoizedBoardEditForm
               colName={col?.name}
-              key={col.id}
-              id={col.id}
-              saveChanges
+              key={col?.id}
+              id={col?.id}
             />
           );
         })}
       </div>
 
-      {/* pick up from hereee, a matter of what is being pushed into the currentboard columns before, now how to sync columns array with the current board array */}
       <Button
         width="full"
         btnType="secondary"
         name="+Add New Column"
         onClick={(e) => {
           e.stopPropagation();
-          setColumns((prev) => [
-            ...prev,
-            <BoardInputColumns
-              id={Math.random() * 1000}
-              key={Math.random() * 1000}
-            />,
-          ]);
+          setCurrentBoard((prev) => {
+            const col = (
+              <MemoizedBoardEditForm
+                id={Math.random() * 1000}
+                key={Math.random() * 1000}
+              />
+            );
+            //   const col = <BoardInputColumns
+            //   // id={Math.random() * 1000}
+            //   key={Math.random() * 1000}
+            // />
+            //   const col = <BoardInputColumns
+            //   // id={Math.random() * 1000}
+            //   key={Math.random() * 1000}
+            // />
+            setColumns((prev) => [...prev, col]);
+            return { ...prev, columns: [...prev.columns, col] };
+          });
+          console.log(columns);
+          // setColumns((prev) => [
+          //   ...prev,
+          //   <BoardInputColumns
+          //     id={Math.random() * 1000}
+          //     key={Math.random() * 1000}
+          //   />,
+          // ]);
+          console.log(columns);
         }}
       />
       <Button
