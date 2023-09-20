@@ -1,4 +1,3 @@
-
 function Overlay({ children, closeOverLay }) {
   return (
     <div

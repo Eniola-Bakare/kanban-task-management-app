@@ -11,7 +11,6 @@ function BoardsContextProvider({ children }) {
   const [showBoardForm, setShowBoardForm] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [boardName, setBoardName] = useState("");
-  console.log(boards);
 
   const [columns, setColumns] = useState([]);
   const [columnNames, setColumnNames] = useState({});
@@ -21,6 +20,15 @@ function BoardsContextProvider({ children }) {
     boards[boards.length - 1] || {}
   );
 
+  // //////////////////////////////////////////////////////////// for tasks below
+
+  const [showTask, setShowTask] = useState(false);
+  const [currentTask, setCurrentTask] = useState({});
+  console.log(currentBoard.columns);
+
+  console.log(currentTask);
+
+  // //////////////////////////////////////////////////////////// for tasks above
   // to create columns from input fields of add board columns
   const colObjects = columns
     .filter((eachCol) => columnNames[eachCol?.props.id] !== undefined)
@@ -116,7 +124,6 @@ function BoardsContextProvider({ children }) {
   // For editing the board
   const [showBoardEditForm, setShowBoardEditForm] = useState(false);
   const [saveChanges, setSaveChanges] = useState(false);
-  const [currColNames, setCurColNames] = useState({});
 
   return (
     <BoardsContext.Provider
@@ -145,6 +152,10 @@ function BoardsContextProvider({ children }) {
         setSaveChanges,
         showDelete,
         setShowDelete,
+        showTask,
+        setShowTask,
+        currentTask,
+        setCurrentTask,
       }}
     >
       {children}

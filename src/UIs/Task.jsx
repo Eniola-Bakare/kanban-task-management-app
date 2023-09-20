@@ -1,6 +1,18 @@
+import { useBoardsContext } from "../Contexts/ContextApi";
+
 function Task({ task }) {
+  const { setShowTask, setCurrentTask } = useBoardsContext();
+
+  function handleShowTask(task) {
+    setShowTask(true);
+    setCurrentTask(task);
+    console.log(task);
+  }
   return (
-    <div className="bg-white m-2 rounded-lg px-3 py-3 shadow-md hover:shadow-lg transition-transform transform hover:scale-105 dark:bg-grey-dark ml-0">
+    <div
+      className="bg-white m-2 rounded-lg px-3 py-3 shadow-md hover:shadow-lg transition-transform transform hover:scale-105 dark:bg-grey-dark ml-0"
+      onClick={() => handleShowTask(task)}
+    >
       <p className="font-bold text-black text-sm dark:text-white">
         {" "}
         {task.title}
