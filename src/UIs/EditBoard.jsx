@@ -22,7 +22,7 @@ function EditBoard() {
     setColumnNames,
   } = useBoardsContext();
 
-  // console.log(currentBoard);
+  console.log(currentBoard);
 
   function handleChanges() {
     if (boardName === "") return;
@@ -44,9 +44,21 @@ function EditBoard() {
     setCurrentBoard((prev) => ({
       ...prev,
       columns: prev.columns.map((col) => {
-        // console.log(columnNames[col]);
-        if (columnNames[col.name]) {
-          return { ...col, name: columnNames[col.name] };
+        console.log(col);
+        if (columnNames[col.id]) {
+          return { ...col, name: columnNames[col.id] };
+        } else if (col?.props?.id) {
+          // return {
+          //   ...col,
+          //   id: col.props.id,
+          //   name: columnNames[col.props.id],
+          //   tasks: [],
+          // };
+          return {
+            id: col.props.id,
+            name: columnNames[col.props.id],
+            tasks: [],
+          };
         }
         return col;
       }),
@@ -76,6 +88,16 @@ function EditBoard() {
           Board Columns
         </label>
         {currentBoard?.columns.map((col) => {
+          if (!col.id) {
+            const column = col.props.id;
+            return (
+              <MemoizedBoardEditForm
+                colName={columnNames[column]}
+                key={column}
+                id={column}
+              />
+            );
+          }
           return (
             <MemoizedBoardEditForm
               colName={col?.name}

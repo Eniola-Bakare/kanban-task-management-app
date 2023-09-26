@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, memo } from "react";
 
 import { useBoardsContext } from "../Contexts/ContextApi";
 
-function BoardInputColumns({ id, colName }) {
+function BoardsEditForm({ id, colName }) {
   const {
     handleRemoveColumn,
     setColumnNames,
@@ -14,6 +14,7 @@ function BoardInputColumns({ id, colName }) {
     setSaveChanges,
   } = useBoardsContext();
   const [columnNameLocal, setColumnNameLocal] = useState(colName || columnName);
+  console.log(columnNameLocal);
   console.log(columnNames);
 
   return (
@@ -28,7 +29,7 @@ function BoardInputColumns({ id, colName }) {
           setColumnNameLocal(e.target.value);
           setColumnNames((prev) => ({
             ...prev,
-            [id]: columnNameLocal,
+            [id]: e.target.value,
           }));
         }}
         type="text"
@@ -51,4 +52,4 @@ function BoardInputColumns({ id, colName }) {
   );
 }
 
-export default React.memo(BoardInputColumns);
+export default React.memo(BoardsEditForm);
