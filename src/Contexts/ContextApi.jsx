@@ -27,10 +27,12 @@ function BoardsContextProvider({ children }) {
   const [taskStatus, setTaskStatus] = useState("");
   const [showStatus, setShowStatus] = useState(false);
   const [showAddTask, setShowAddTask] = useState(false);
+  const [subTaskArr, setSubTaskArr] = useState([]);
 
   // console.log(currentBoard.columns);
 
-  console.log(currentTask);
+  // console.log(currentTask);
+  console.log(subTaskArr);
 
   // //////////////////////////////////////////////////////////// for tasks above
   // to create columns from input fields of add board columns
@@ -166,6 +168,8 @@ function BoardsContextProvider({ children }) {
         setShowStatus,
         showAddTask,
         setShowAddTask,
+        subTaskArr,
+        setSubTaskArr,
       }}
     >
       {children}
