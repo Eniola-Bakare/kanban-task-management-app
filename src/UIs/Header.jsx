@@ -4,7 +4,7 @@ import Button from "./Button";
 import Logo from "./Logo";
 
 function Header() {
-  const { currentBoard, setShowBoardEditForm, setShowDelete } =
+  const { currentBoard, setShowBoardEditForm, setShowDelete, setShowAddTask } =
     useBoardsContext();
   const [activeBoardName, setActiveBoardName] = useState("");
   const [boardMenu, setBoardMenu] = useState(false);
@@ -27,6 +27,7 @@ function Header() {
             disabled={currentBoard?.columns === undefined}
             name="+ Add New Task"
             width="[164px]"
+            onClick={() => setShowAddTask(true)}
           />
           <img
             src="./icon-vertical-ellipsis.svg"

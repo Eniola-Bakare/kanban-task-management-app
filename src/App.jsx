@@ -1,5 +1,6 @@
 import { useBoardsContext } from "./Contexts/ContextApi";
 import AddNewBoardForm from "./UIs/AddNewBoardForm";
+import AddTask from "./UIs/AddTask";
 import Applayout from "./UIs/Applayout";
 import Delete from "./UIs/Delete";
 import EditBoard from "./UIs/EditBoard";
@@ -15,7 +16,9 @@ function App() {
     showDelete,
     setShowDelete,
     showTask,
-    setShowTask
+    setShowTask,
+    showAddTask,
+    setShowAddTask,
   } = useBoardsContext();
   return (
     <div className="font-plus h-[100%] box-border relative">
@@ -38,6 +41,11 @@ function App() {
       {showTask && (
         <Overlay closeOverLay={setShowTask}>
           <Tasks />
+        </Overlay>
+      )}
+      {showAddTask && (
+        <Overlay closeOverLay={setShowAddTask}>
+          <AddTask />
         </Overlay>
       )}
     </div>
