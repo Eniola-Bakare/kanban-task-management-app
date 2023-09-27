@@ -14,8 +14,8 @@ function BoardsEditForm({ id, colName }) {
     setSaveChanges,
   } = useBoardsContext();
   const [columnNameLocal, setColumnNameLocal] = useState(colName || columnName);
-  console.log(columnNameLocal);
-  console.log(columnNames);
+  // console.log(columnNameLocal);
+  // console.log(columnNames);
 
   return (
     <div

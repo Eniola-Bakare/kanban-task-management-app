@@ -24,7 +24,7 @@ function BoardsContextProvider({ children }) {
 
   const [showTask, setShowTask] = useState(false);
   const [currentTask, setCurrentTask] = useState({});
-  console.log(currentBoard.columns);
+  // console.log(currentBoard.columns);
 
   console.log(currentTask);
 

@@ -1,6 +1,6 @@
 function StatusSelect({ name }) {
   return (
-        <option>{name}</option>
+        <option className="bg-purple-light ">{name}</option>
   );
 }
 

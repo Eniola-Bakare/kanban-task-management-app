@@ -22,7 +22,7 @@ function EditBoard() {
     setColumnNames,
   } = useBoardsContext();
 
-  console.log(currentBoard);
+  // console.log(currentBoard);
 
   function handleChanges() {
     if (boardName === "") return;
@@ -69,7 +69,7 @@ function EditBoard() {
     setColumnNames({});
     setShowBoardEditForm(false);
   }
-  console.log(currentBoard.columns);
+  // console.log(currentBoard.columns);
 
   return (
     <div className="w-[40%] bg-white dark:bg-grey-light p-10 rounded-lg h-fit flex flex-col gap-5">
