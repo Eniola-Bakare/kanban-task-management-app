@@ -24,6 +24,9 @@ function BoardsContextProvider({ children }) {
 
   const [showTask, setShowTask] = useState(false);
   const [currentTask, setCurrentTask] = useState({});
+  const [taskStatus, setTaskStatus] = useState("");
+  const [showStatus, setShowStatus] = useState(false);
+
   // console.log(currentBoard.columns);
 
   console.log(currentTask);
@@ -156,6 +159,10 @@ function BoardsContextProvider({ children }) {
         setShowTask,
         currentTask,
         setCurrentTask,
+        taskStatus,
+        setTaskStatus,
+        showStatus,
+        setShowStatus,
       }}
     >
       {children}

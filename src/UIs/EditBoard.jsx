@@ -1,7 +1,6 @@
 import React, { useEffect, memo } from "react";
 import { useBoardsContext } from "../Contexts/ContextApi";
 import FormInput from "./FormInput";
-import BoardInputColumns from "./BoardInputColumns";
 import Button from "./Button";
 import BoardsEditForm from "./BoardsEditForm";
 
